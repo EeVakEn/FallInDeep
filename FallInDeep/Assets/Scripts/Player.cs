@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
     public static Player instance;
      private bool facingRight = true;
     public Rigidbody2D rb;
@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public float speedx = 50000f;
     public int chooseControl = 2;
     private int normalSpeed=1;
+    private Vector3 mousePosition;
+    public float moveSpeed = 0.1f;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,26 +65,27 @@ public class Player : MonoBehaviour
             Flip();
         }
     }
-    public void OnLeftButtonDown(){
+    void OnLeftButtonDown(){
         if(HorizontalMove >= 0f){
             HorizontalMove = -normalSpeed;
         }
     }
-    public void OnRightButtonDown(){
+    void OnRightButtonDown(){
         if(HorizontalMove <= 0f){
             HorizontalMove = normalSpeed;
         }
     }
-    public void OnButtonUp(){
+    void OnButtonUp(){
         HorizontalMove = 0f;
     }
-      void Flip()
-        {
-            facingRight = !facingRight;
-            transform.Rotate(0f,180f,0f);
-            // Vector3 Scaler = transform.localScale;
-            // Scaler.x *= -1;
-        
-            // transform.localScale = Scaler;
-        }
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f,180f,0f);
+        // Vector3 Scaler = transform.localScale;
+        // Scaler.x *= -1;
+    
+        // transform.localScale = Scaler;
+    }
 }
+

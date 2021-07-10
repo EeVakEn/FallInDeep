@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8945253341377589796}
   - component: {fileID: 4646198378023437857}
   - component: {fileID: -8788966766832407176}
+  - component: {fileID: -3484387317572268796}
   m_Layer: 0
   m_Name: DeathEnemy
   m_TagString: Untagged
@@ -4959,3 +4960,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3484387317572268796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060982735598530522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f590c8983762e438291c31421b03ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
