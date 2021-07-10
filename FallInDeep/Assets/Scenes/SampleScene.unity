@@ -3792,6 +3792,7 @@ MonoBehaviour:
   coinValue: 1
   anim1: {fileID: 728546316}
   anim2: {fileID: 954242201}
+  effect: {fileID: 8975253266530015889, guid: 82657743cb82c894194b07c622116eab, type: 3}
 --- !u!70 &1878152741
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
