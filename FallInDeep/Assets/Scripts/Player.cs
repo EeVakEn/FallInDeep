@@ -16,13 +16,32 @@ public class Player : MonoBehaviour
     public Joystick joystick;
     public float speedx = 50000f;
     public int chooseControl = 2;
+
     private int normalSpeed=1;
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
+    public GameObject char1, char2;
+    public GameObject Blaster, Shotgun;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         chooseControl = Public.control;
+
+        
+        if(Public.charOn == 1){
+            char1.gameObject.SetActive(true);
+            char2.gameObject.SetActive(false);
+        }else if(Public.charOn == 2){
+            char1.gameObject.SetActive(false);
+            char2.gameObject.SetActive(true);
+        }
+        if(Public.weaponOn == 1){
+            Blaster.gameObject.SetActive(true);
+            Shotgun.gameObject.SetActive(false);
+        }else if(Public.weaponOn == 2){
+            Blaster.gameObject.SetActive(false);
+            Shotgun.gameObject.SetActive(true);
+        }
     }
 
     private void FixedUpdate()

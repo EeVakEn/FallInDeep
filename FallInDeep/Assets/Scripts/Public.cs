@@ -8,6 +8,7 @@ public static class Public
     public static int coins;
     public static int record;
     public static int control=3;
-    public static float musicvolume =0f;
-    public static int charOn=2;
+    public static float musicvolume = 0f;
+    public static int charOn=1;
+    public static int weaponOn=1;
 }
