@@ -8,9 +8,8 @@ public class Weapon2 : MonoBehaviour
     public Transform firePoint;
     public Transform firePoint2;
     public Transform firePoint3;
-    public Transform PointEffect;
     public GameObject bullet;
-    public GameObject effect;
+
     private Animator anim;
     public AudioSource ShotSound;
     // Update is called once per frame
@@ -26,7 +25,6 @@ public class Weapon2 : MonoBehaviour
             ShotSound.pitch = Random.Range(0.9f, 1.1f);
             ShotSound.Play();
             anim.SetTrigger("reload");
-            Instantiate(effect, PointEffect.position, Quaternion.identity);
         }
     }
 
