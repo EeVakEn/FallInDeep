@@ -5,106 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public static Player instance;
-     private bool facingRight = true;
-    public Rigidbody2D rb;
-    public GameObject ControlButtons;
-    public GameObject ControlJoystick;
-    public float HorizontalMove;
-    public float speed = 1f;
-    public float fallspeed = 3f;
-    public Joystick joystick;
-    public float speedx = 50000f;
-    public int chooseControl = 2;
-
-    private int normalSpeed=1;
-    private Vector3 mousePosition;
-    public float moveSpeed = 0.1f;
-    public GameObject char1, char2;
-    public GameObject Blaster, Shotgun;
+    public List<GameObject> skins = new List<GameObject>();
+    public List<GameObject> weapons = new List<GameObject>();
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        chooseControl = Public.control;
-
         
-        if(Public.charOn == 1){
-            char1.gameObject.SetActive(true);
-            char2.gameObject.SetActive(false);
-        }else if(Public.charOn == 2){
-            char1.gameObject.SetActive(false);
-            char2.gameObject.SetActive(true);
+        for (int i = 0; i < skins.Count; i++)
+        {   
+            if(PlayerPrefs.GetInt("Skin")==i)
+                skins[i].SetActive(true);
+            else
+                skins[i].SetActive(false);
         }
-        if(Public.weaponOn == 1){
-            Blaster.gameObject.SetActive(true);
-            Shotgun.gameObject.SetActive(false);
-        }else if(Public.weaponOn == 2){
-            Blaster.gameObject.SetActive(false);
-            Shotgun.gameObject.SetActive(true);
+        for (int i = 0; i < weapons.Count; i++)
+        {   
+            if(PlayerPrefs.GetInt("Weapon")==i)
+                weapons[i].SetActive(true);
+            else
+                weapons[i].SetActive(false);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        //ганьг
-        //выбор управленя
-        if(chooseControl == 0){//джойстик
-            ControlJoystick.SetActive(true);
-            ControlButtons.SetActive(false);
-            HorizontalMove = joystick.Horizontal;
-            rb.velocity = new Vector2(HorizontalMove*10f*speedx, 0f);
-        }else
-        if(chooseControl == 1){//кнопки
-            ControlJoystick.SetActive(false);
-            ControlButtons.SetActive(true);
-            rb.velocity = new Vector2(HorizontalMove*10f*speedx, 0f);
-        }else
-        if(chooseControl == 2){//акселерометр
-            ControlJoystick.SetActive(false);
-            ControlButtons.SetActive(false);
-            Vector3 acceleration = Input.acceleration;
-            HorizontalMove = acceleration.x;
-            Vector2 targetVelocity = new Vector2(HorizontalMove * 10f * speedx, 0f);
-            rb.velocity = targetVelocity;
-        }else
-        if(chooseControl == 3){//wasd
-            ControlJoystick.SetActive(false);
-            ControlButtons.SetActive(false);
-            HorizontalMove = Input.GetAxisRaw("Horizontal");
-            Vector2 targetVelocity = new Vector2(HorizontalMove * 10f * speedx, 0f);
-            rb.velocity = targetVelocity;
-        }
-
         
-        if(facingRight == false && HorizontalMove > 0)
-        {
-            Flip();
-        } else if (facingRight == true && HorizontalMove < 0)
-        {
-            Flip();
-        }
     }
-    void OnLeftButtonDown(){
-        if(HorizontalMove >= 0f){
-            HorizontalMove = -normalSpeed;
-        }
-    }
-    void OnRightButtonDown(){
-        if(HorizontalMove <= 0f){
-            HorizontalMove = normalSpeed;
-        }
-    }
-    void OnButtonUp(){
-        HorizontalMove = 0f;
-    }
-    void Flip()
-    {
-        facingRight = !facingRight;
-        transform.Rotate(0f,180f,0f);
-        // Vector3 Scaler = transform.localScale;
-        // Scaler.x *= -1;
-    
-        // transform.localScale = Scaler;
-    }
+
 }
 

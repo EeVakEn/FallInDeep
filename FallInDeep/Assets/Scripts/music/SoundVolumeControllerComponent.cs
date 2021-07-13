@@ -18,7 +18,7 @@ public class SoundVolumeControllerComponent : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float volume; // значение громкости от 0 до 1
 
-    private void Amake()
+    private void Awake()
     {
         if (PlayerPrefs.HasKey(this.saveVolumeKey))
         {
