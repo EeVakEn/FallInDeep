@@ -12,6 +12,8 @@ public class Weapon2 : MonoBehaviour
 
     private Animator anim;
     public AudioSource ShotSound;
+    private bool cooldown = false;
+    private const float ShootInterval = 1f;
     // Update is called once per frame
     private void Start()
     {
@@ -19,15 +21,22 @@ public class Weapon2 : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !cooldown)
         {
+            cooldown = true;
             Shoot();
             ShotSound.pitch = Random.Range(0.9f, 1.1f);
             ShotSound.Play();
-            anim.SetTrigger("reload");
+            anim.SetBool("fire",true);
+            Invoke("CoolDown", ShootInterval);
+        }else
+        {
+            anim.SetBool("fire",false);
         }
     }
-
+    void CoolDown(){
+        cooldown = false;
+    }
     void Shoot()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
