@@ -40,7 +40,7 @@ public class Controller : MonoBehaviour
             ControlButtons.SetActive(true);
             rb.velocity = new Vector2(HorizontalMove* 7f * speedx, 0f);
         }else
-        if(chooseControl == 2){//акселерометр
+        if(chooseControl == 2){ //акселерометр
             ControlJoystick.SetActive(false);
             ControlButtons.SetActive(false);
             HorizontalMove = Input.acceleration.x;

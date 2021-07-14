@@ -5,6 +5,4 @@ using UnityEngine;
 public static class Public
 {
     public static int score;
-    public static float musicvolume;
-    
 }
