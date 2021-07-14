@@ -2,67 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
+
 public class SkinAndWeaponManager : MonoBehaviour
 {
-    public SpriteRenderer srWeapon;
-    public SpriteRenderer srSkin;
+    public Image srSkin;
+    public Image srWeapon;
     public List<Sprite> skins = new List<Sprite>();
     public List<Sprite> weapons = new List<Sprite>();
-    private int selectedSkin;
-    private int selectedWeapon;
+    private int renderSkin;
+    private int renderWeapon;
     private void Start()
     {
         if (PlayerPrefs.HasKey("Skin"))
-            selectedSkin = PlayerPrefs.GetInt("Skin");
+        {
+            renderSkin = PlayerPrefs.GetInt("Skin");
+            srSkin.sprite = skins[renderSkin];
+        }
         else
-            selectedSkin = 0;
+        {
+            renderSkin = 0;
+            srSkin.sprite = skins[renderSkin];
+        }
+
         if (PlayerPrefs.HasKey("Weapon"))
-            selectedSkin = PlayerPrefs.GetInt("Weapon");
+        {
+            renderSkin = PlayerPrefs.GetInt("Weapon");
+            srWeapon.sprite = weapons[renderWeapon];
+        }
         else
-            selectedSkin = 0;
+        { 
+            renderSkin = 0;
+            srWeapon.sprite = weapons[renderWeapon];
+        }
+       
     }
+    
     public void NextSkin()
     {
-        selectedSkin += 1;
-        if (selectedSkin == skins.Count)
+        renderSkin += 1;
+        if (renderSkin == skins.Count)
         {
-            selectedSkin = 0;
+            renderSkin = 0;
         }
-        srSkin.sprite = skins[selectedSkin];
+        srSkin.sprite = skins[renderSkin];
     }
     public void BackSkin()
     {
-        selectedSkin -= 1;
-        if (selectedSkin < 0)
+        renderSkin -= 1;
+        if (renderSkin < 0)
         {
-            selectedSkin = skins.Count - 1;
+            renderSkin = skins.Count - 1;
         }
-        srSkin.sprite = skins[selectedSkin];
+        srSkin.sprite = skins[renderSkin];
     }
     public void NextWeapon()
     {
-        selectedWeapon += 1;
-        if (selectedWeapon == weapons.Count)
+        renderWeapon += 1;
+        if (renderWeapon == weapons.Count)
         {
-            selectedWeapon = 0;
+            renderWeapon = 0;
         }
-        srWeapon.sprite = weapons[selectedWeapon];
+        srWeapon.sprite = weapons[renderWeapon];
     }
     public void BackWeapon()
     {
-        selectedWeapon -= 1;
-        if (selectedWeapon < 0)
+        renderWeapon -= 1;
+        if (renderWeapon < 0)
         {
-            selectedWeapon = weapons.Count - 1;
+            renderWeapon = weapons.Count - 1;
         }
-        srWeapon.sprite = weapons[selectedWeapon];
+        srWeapon.sprite = weapons[renderWeapon];
     }
     public void SelectSkin()
     {
-        PlayerPrefs.SetInt("Skin", selectedSkin);
+        PlayerPrefs.SetInt("Skin", renderSkin);
     }
     public void SelectWeapon()
     {
-        PlayerPrefs.SetInt("Weapon", selectedWeapon);
+        PlayerPrefs.SetInt("Weapon", renderWeapon);
     }
 }
