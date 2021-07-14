@@ -8,10 +8,10 @@ public class RecordShow : MonoBehaviour
 
     void Start()
     {   
-        if(Public.record==Public.score){
-            text.text = "New!!! \n" + Public.record.ToString();
+        if(PlayerPrefs.GetInt("record")==Public.score){
+            text.text = "New!!! \n" + PlayerPrefs.GetInt("record").ToString();
         }else{
-            text.text = Public.record.ToString();
+            text.text = PlayerPrefs.GetInt("record").ToString();
         }
         
     }

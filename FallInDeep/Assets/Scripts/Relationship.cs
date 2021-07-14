@@ -10,11 +10,11 @@ public class Relationship : MonoBehaviour
     public GameObject effect;
     private void Start()
     {
-        if (Public.charOn == 1)
+        if (PlayerPrefs.GetInt("Skin") == 0)
         {
             anim = anim1;
         }
-        else if (Public.charOn == 2)
+        else if (PlayerPrefs.GetInt("Skin") == 1)
         {
             anim = anim2;
         }
@@ -41,7 +41,7 @@ public class Relationship : MonoBehaviour
         {
 
             GameObject.FindWithTag("Player").GetComponent<healthbar>().fill -= 0.4f;
-
+            
             Destroy(other.gameObject);
             anim.SetTrigger("isHit");
 

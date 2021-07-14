@@ -7,13 +7,9 @@ public class Score : MonoBehaviour
 {
 
     public TextMeshProUGUI text;
-    public int score;
+    private int score;
     public int speed = 1;
-    private void Awake() {
-        if(PlayerPrefs.HasKey("record")){
-            Public.record = PlayerPrefs.GetInt("record");
-        }
-    }
+
     void Start()
     {
         score = 0;
@@ -24,11 +20,9 @@ public class Score : MonoBehaviour
     {
         score += Convert.ToInt32(speed);
         text.text = score.ToString();
-        
         Public.score = score;
-        if(score > Public.record){
-            Public.record = score;
-            PlayerPrefs.SetInt("record",Public.record);
+        if(score > PlayerPrefs.GetInt("record")){
+            PlayerPrefs.SetInt("record",score);
         }
 
     }

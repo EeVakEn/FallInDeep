@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     public int health = 1;
+    public int killReward = 5;
     public GameObject effect;
     private Animator anim;
 
@@ -21,8 +22,9 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-        Instantiate(effect, transform.position, Quaternion.identity);
-        Die();
+            Instantiate(effect, transform.position, Quaternion.identity);
+            Die();
+            CoinManager.instance.ChangeScore(killReward);
         }
     }
 

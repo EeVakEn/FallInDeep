@@ -8,6 +8,6 @@ public class ShowRecord : MonoBehaviour
 
     void Start()
     {   
-        text.text = Public.record.ToString();
+        text.text = PlayerPrefs.GetInt("record").ToString();
     }
 }

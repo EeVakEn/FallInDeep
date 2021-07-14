@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class ShoeCoins : MonoBehaviour
+public class ShowCoins : MonoBehaviour
 {
 public TextMeshProUGUI text;
     void Update()
     {
-
-        text.text = Public.coins.ToString();
+        text.text = PlayerPrefs.GetInt("coins").ToString();
     }
 }

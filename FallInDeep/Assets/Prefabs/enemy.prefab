@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  killReward: 7
   effect: {fileID: 2060982735598530522, guid: b7e9244829798284993aa509f7212f25, type: 3}
-  anim: {fileID: 5557413841344222473}
 --- !u!114 &994138274714118470
 MonoBehaviour:
   m_ObjectHideFlags: 0
